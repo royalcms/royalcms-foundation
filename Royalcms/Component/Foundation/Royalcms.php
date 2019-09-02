@@ -26,14 +26,14 @@ class Royalcms extends Container implements RoyalcmsContract, HttpKernelInterfac
      *
      * @var string
      */
-    const VERSION = '5.7.0';
+    const VERSION = '5.17.0';
 
     /**
      * The Royalcms framework release.
      *
      * @var string
      */
-    const RELEASE = '2019-02-21';
+    const RELEASE = '2019-07-03';
 
     /**
      * The base path for the Laravel installation.
@@ -428,14 +428,18 @@ class Royalcms extends Container implements RoyalcmsContract, HttpKernelInterfac
      *
      * @return string
      */
-    public function themePath()
+    public function themePath($dir = null)
     {
-        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'themes';
+        if (! is_null($dir)) {
+            $dir = DIRECTORY_SEPARATOR . $dir;
+        }
+
+        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'themes'.$dir;
 
         if ($this->runningInSite() && is_dir($path)) {
             return $path;
         } else {
-            return $this->contentPath().DIRECTORY_SEPARATOR.'themes';
+            return $this->contentPath().DIRECTORY_SEPARATOR.'themes'.$dir;
         }
     }
 
@@ -444,14 +448,18 @@ class Royalcms extends Container implements RoyalcmsContract, HttpKernelInterfac
      *
      * @return string
      */
-    public function uploadPath()
+    public function uploadPath($dir = null)
     {
-        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'uploads';
+        if (! is_null($dir)) {
+            $dir = DIRECTORY_SEPARATOR . $dir;
+        }
+
+        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'uploads'.$dir;
 
         if ($this->runningInSite() && is_dir($path)) {
             return $path;
         } else {
-            return $this->contentPath().DIRECTORY_SEPARATOR.'uploads';
+            return $this->contentPath().DIRECTORY_SEPARATOR.'uploads'.$dir;
         }
     }
 
@@ -460,14 +468,18 @@ class Royalcms extends Container implements RoyalcmsContract, HttpKernelInterfac
      *
      * @return string
      */
-    public function resourcePath()
+    public function resourcePath($dir = null)
     {
-        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'resources';
+        if (! is_null($dir)) {
+            $dir = DIRECTORY_SEPARATOR . $dir;
+        }
+
+        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'resources'.$dir;
 
         if ($this->runningInSite() && is_dir($path)) {
             return $path;
         } else {
-            return $this->contentPath().DIRECTORY_SEPARATOR.'resources';
+            return $this->contentPath().DIRECTORY_SEPARATOR.'resources'.$dir;
         }
     }
 
@@ -476,14 +488,18 @@ class Royalcms extends Container implements RoyalcmsContract, HttpKernelInterfac
      *
      * @return string
      */
-    public function testPath()
+    public function testPath($dir = null)
     {
-        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'tests';
+        if (! is_null($dir)) {
+            $dir = DIRECTORY_SEPARATOR . $dir;
+        }
+
+        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'tests'.$dir;
 
         if ($this->runningInSite() && is_dir($path)) {
             return $path;
         } else {
-            return $this->contentPath().DIRECTORY_SEPARATOR.'tests';
+            return $this->contentPath().DIRECTORY_SEPARATOR.'tests'.$dir;
         }
     }
 
@@ -492,14 +508,18 @@ class Royalcms extends Container implements RoyalcmsContract, HttpKernelInterfac
      *
      * @return string
      */
-    public function configPath()
+    public function configPath($dir = null)
     {
-        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'configs';
+        if (! is_null($dir)) {
+            $dir = DIRECTORY_SEPARATOR . $dir;
+        }
+
+        $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'configs'.$dir;
 
         if ($this->runningInSite() && is_dir($path)) {
             return $path;
         } else {
-            return $this->contentPath().DIRECTORY_SEPARATOR.'configs';
+            return $this->contentPath().DIRECTORY_SEPARATOR.'configs'.$dir;
         }
     }
 
@@ -545,7 +565,7 @@ class Royalcms extends Container implements RoyalcmsContract, HttpKernelInterfac
      *
      * @return string
      */
-    public function langPath()
+    public function langPath($dir = null)
     {
         $path = $this->siteContentPath().DIRECTORY_SEPARATOR.'languages';
 
