@@ -21,6 +21,7 @@ class LoadConfiguration
      */
     public function bootstrap(Royalcms $royalcms)
     {
+
         $items = [];
 
         // First we will see if we have a cache configuration file. If we do, we'll load
@@ -59,7 +60,7 @@ class LoadConfiguration
      */
     protected function getConfigLoader(Royalcms $royalcms)
     {
-        return new FileLoader(new Filesystem, $royalcms['path'].'/content/configs', $royalcms['path.base'].'/content/configs');
+        return new FileLoader(new Filesystem, $royalcms['path'].'/content/configs', $royalcms['path.base'].'/content/configs', $royalcms->vendorPath()."/royalcms/framework/resources");
     }
 
     /**
